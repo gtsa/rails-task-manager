@@ -1,0 +1,7 @@
+<div class = 'container mt-5'>
+<div><%= link_to('Edit this task', task_edit_path(@task))%></div>
+<div class = 'container my-2 bg-light text-dark py-4 border'>
+<%= @task.details %>
+</div>
+<p>This task is <%= @task.completed ? ' ' : ' not'%> completed<%= @task.completed ? '' : ' yet'%></p>
+</div>

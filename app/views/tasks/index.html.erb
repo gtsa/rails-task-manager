@@ -1,0 +1,22 @@
+<%# <% unchecked = '<i class="fa-regular fa-square d-inline-flex"></i>' %>
+<%# <% checked = '<i class="fa-regular fa-square-check  d-inline-flex"></i>' %>
+
+<div class="container mt-5">
+  <div class="border-bottom">
+    <h1 class="mb-3">My tasks</h1>
+    <% @tasks.each do |task| %>
+      <div>
+        <div class = "d-inline-flex"><i class="fa-regular fa-square<%= task.completed ? "-check" : ""%>"></i></div>
+        <div class = "d-inline-flex"><%= link_to(task.title.to_str, task_path(task)) %></div>
+        <div class = "d-inline-flex"><%= link_to('<i class="fa-regular fa-trash-can"></i>'.html_safe, task_path(task),
+      data: {turbo_method: :delete, turbo_confirm: "Delete #{task.title}?"}) %></div>
+      </div>
+    <% end %>
+  </div>
+  <div style = "color: cornflowerblue">
+    <div class="container mt-2 d-inline-flex">
+      <b><i class="fa-solid fa-plus ml-2"></i></b>
+      <%= link_to('Add a new task', task_new_path) %>
+    </div>
+  </div>
+</div>
